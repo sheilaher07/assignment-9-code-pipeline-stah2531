@@ -2,13 +2,13 @@ Started by GitHub push by stah2531
 Obtained Jenkinsfile from git https://github.com/stah2531/java-project.git
 Running in Durability level: MAX_SURVIVABILITY
 [Pipeline] node
-Running on 266d97650a09 in /workspace/java-pipeline
+Running on 91472bdbb2f2 in /workspace/java-pipeline
 [Pipeline] {
 [Pipeline] stage
 [Pipeline] { (Declarative: Checkout SCM)
 [Pipeline] checkout
 Fetching changes from the remote Git repository
-Checking out Revision 46070fd6b927c92c83200942f1decf05ec0ee634 (refs/remotes/origin/master)
+Checking out Revision 9fdc756389d3a2aad48a42c46e19cff23eed4a20 (refs/remotes/origin/master)
 Commit message: "Update Jenkinsfile"
 [Pipeline] }
 [Pipeline] // stage
@@ -18,7 +18,7 @@ Commit message: "Update Jenkinsfile"
 [Pipeline] { (Unit Tests)
 [Pipeline] git
 Fetching changes from the remote Git repository
-Checking out Revision 46070fd6b927c92c83200942f1decf05ec0ee634 (refs/remotes/origin/master)
+Checking out Revision 9fdc756389d3a2aad48a42c46e19cff23eed4a20 (refs/remotes/origin/master)
 Commit message: "Update Jenkinsfile"
 [Pipeline] sh
 + ant -f test.xml -v
@@ -36,8 +36,8 @@ Fetching upstream changes from https://github.com/stah2531/java-project.git
  > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
  > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
  > git config core.sparsecheckout # timeout=10
- > git checkout -f 46070fd6b927c92c83200942f1decf05ec0ee634
- > git rev-list --no-walk c611ea9f4d8855fdb5df0c0c577107db2a66062a # timeout=10
+ > git checkout -f 9fdc756389d3a2aad48a42c46e19cff23eed4a20
+ > git rev-list --no-walk 80932ffc0cb9bfec4c840e59c282a1628726bcd6 # timeout=10
 parsing buildfile jar:file:/usr/share/java/apache-ant/lib/ant.jar!/org/apache/tools/ant/antlib.xml with URI = jar:file:/usr/share/java/apache-ant/lib/ant.jar!/org/apache/tools/ant/antlib.xml from a zip file
  [property] Loading Environment env.
 Build sequence for target(s) `main' is [clean, makedir, compile, test, main]
@@ -88,10 +88,10 @@ Fetching upstream changes from https://github.com/stah2531/java-project.git
  > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
  > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
  > git config core.sparsecheckout # timeout=10
- > git checkout -f 46070fd6b927c92c83200942f1decf05ec0ee634
+ > git checkout -f 9fdc756389d3a2aad48a42c46e19cff23eed4a20
  > git branch -a -v --no-abbrev # timeout=10
  > git branch -D master # timeout=10
- > git checkout -b master 46070fd6b927c92c83200942f1decf05ec0ee634
+ > git checkout -b master 9fdc756389d3a2aad48a42c46e19cff23eed4a20
 
 test:
     [junit] Implicitly adding /usr/share/java/apache-ant/lib/ant-launcher.jar:/usr/share/java/apache-ant/lib/ant.jar:/usr/share/java/apache-ant/lib/ant-junit.jar:/usr/share/java/apache-ant/lib/ant-junit4.jar to CLASSPATH
@@ -111,8 +111,8 @@ test:
     [junit] 'threadid=0'
     [junit] 'logtestlistenerevents=false'
     [junit] 'formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/workspace/java-pipeline/reports/result.xml'
-    [junit] 'crashfile=/workspace/java-pipeline/junitvmwatcher2868140438527445264.properties'
-    [junit] 'propsfile=/workspace/java-pipeline/junit9011384880758037656.properties'
+    [junit] 'crashfile=/workspace/java-pipeline/junitvmwatcher1112972155027662613.properties'
+    [junit] 'propsfile=/workspace/java-pipeline/junit7008426521091972733.properties'
     [junit] 
     [junit] The ' characters around the executable and arguments are
     [junit] not part of the command.
@@ -151,7 +151,7 @@ clean:
    [delete] Deleting /workspace/java-pipeline/bin/RectangleTest.class
    [delete] Deleting directory /workspace/java-pipeline/bin
    [delete] Deleting directory /workspace/java-pipeline/dist
-   [delete] Deleting /workspace/java-pipeline/dist/rectangle-2.jar
+   [delete] Deleting /workspace/java-pipeline/dist/rectangle-1.jar
    [delete] Deleting directory /workspace/java-pipeline/dist
 
 makedir:
@@ -183,7 +183,7 @@ dropping /workspace/java-pipeline/usr/share/java/apache-ant/lib/junit.jar from p
     [javac]     /workspace/java-pipeline/src/Rectangulator.java
 
 jar:
-      [jar] Building jar: /workspace/java-pipeline/dist/rectangle-3.jar
+      [jar] Building jar: /workspace/java-pipeline/dist/rectangle-2.jar
       [jar] adding directory META-INF/
       [jar] adding entry META-INF/MANIFEST.MF
       [jar] adding entry Rectangle.class
@@ -201,9 +201,9 @@ Total time: 0 seconds
 [Pipeline] stage
 [Pipeline] { (Deploy)
 [Pipeline] sh
-+ aws s3 cp /workspace/java-pipeline/dist/ s3://stah2531-assignment-9/ --recursive --include rectangle-*.jar
-Completed 1.8 KiB/1.8 KiB (24.3 KiB/s) with 1 file(s) remaining
-upload: dist/rectangle-3.jar to s3://stah2531-assignment-9/rectangle-3.jar
++ aws s3 cp /workspace/java-pipeline/dist/ s3://stah2531-assignment-9/ --recursive --include rectangle-2.jar
+Completed 1.8 KiB/1.8 KiB (29.6 KiB/s) with 1 file(s) remaining
+upload: dist/rectangle-2.jar to s3://stah2531-assignment-9/rectangle-2.jar
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] stage
@@ -215,195 +215,195 @@ upload: dist/rectangle-3.jar to s3://stah2531-assignment-9/rectangle-3.jar
 {
     "StackResources": [
         {
-            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/c4e12750-e922-11e8-88e5-500c286f3262", 
+            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/e8b3f670-ea0e-11e8-a862-500c2893c036", 
             "ResourceStatus": "CREATE_COMPLETE", 
             "DriftInformation": {
                 "StackResourceDriftStatus": "NOT_CHECKED"
             }, 
             "ResourceType": "AWS::IAM::Policy", 
-            "Timestamp": "2018-11-15T22:07:24.148Z", 
+            "Timestamp": "2018-11-17T02:17:44.182Z", 
             "StackName": "jenkins", 
-            "PhysicalResourceId": "jenki-ECAc-1OV380ORIT480", 
+            "PhysicalResourceId": "jenki-ECAc-GOZ6FGLATOL8", 
             "LogicalResourceId": "ECAccessPolicy"
         }, 
         {
-            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/c4e12750-e922-11e8-88e5-500c286f3262", 
+            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/e8b3f670-ea0e-11e8-a862-500c2893c036", 
             "ResourceStatus": "CREATE_COMPLETE", 
             "DriftInformation": {
                 "StackResourceDriftStatus": "NOT_CHECKED"
             }, 
             "ResourceType": "AWS::EC2::InternetGateway", 
-            "Timestamp": "2018-11-15T22:07:18.423Z", 
+            "Timestamp": "2018-11-17T02:17:39.352Z", 
             "StackName": "jenkins", 
-            "PhysicalResourceId": "igw-02c6c5b7dc567a1b4", 
+            "PhysicalResourceId": "igw-08175443755e28a77", 
             "LogicalResourceId": "InternetGateway"
         }, 
         {
-            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/c4e12750-e922-11e8-88e5-500c286f3262", 
+            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/e8b3f670-ea0e-11e8-a862-500c2893c036", 
             "ResourceStatus": "CREATE_COMPLETE", 
             "DriftInformation": {
                 "StackResourceDriftStatus": "NOT_CHECKED"
             }, 
             "ResourceType": "AWS::IAM::Role", 
-            "Timestamp": "2018-11-15T22:07:14.449Z", 
+            "Timestamp": "2018-11-17T02:17:35.305Z", 
             "StackName": "jenkins", 
-            "PhysicalResourceId": "jenkins-JenkinsAccessRole-1U7C2TTU4ZJD", 
+            "PhysicalResourceId": "jenkins-JenkinsAccessRole-G32N151WE7ZJ", 
             "LogicalResourceId": "JenkinsAccessRole"
         }, 
         {
-            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/c4e12750-e922-11e8-88e5-500c286f3262", 
+            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/e8b3f670-ea0e-11e8-a862-500c2893c036", 
             "ResourceStatus": "CREATE_COMPLETE", 
             "DriftInformation": {
                 "StackResourceDriftStatus": "NOT_CHECKED"
             }, 
             "ResourceType": "AWS::IAM::InstanceProfile", 
-            "Timestamp": "2018-11-15T22:09:18.912Z", 
+            "Timestamp": "2018-11-17T02:19:39.479Z", 
             "StackName": "jenkins", 
-            "PhysicalResourceId": "jenkins-JenkinsInstanceProfile-JFHUHTPEN6RJ", 
+            "PhysicalResourceId": "jenkins-JenkinsInstanceProfile-157XPFNXOAF30", 
             "LogicalResourceId": "JenkinsInstanceProfile"
         }, 
         {
-            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/c4e12750-e922-11e8-88e5-500c286f3262", 
+            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/e8b3f670-ea0e-11e8-a862-500c2893c036", 
             "ResourceStatus": "CREATE_COMPLETE", 
             "DriftInformation": {
                 "StackResourceDriftStatus": "NOT_CHECKED"
             }, 
             "ResourceType": "AWS::EC2::SecurityGroupIngress", 
-            "Timestamp": "2018-11-15T22:07:35.732Z", 
+            "Timestamp": "2018-11-17T02:17:54.936Z", 
             "StackName": "jenkins", 
             "PhysicalResourceId": "JenkinsSGIngressTCP50000", 
             "LogicalResourceId": "JenkinsSGIngressTCP50000"
         }, 
         {
-            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/c4e12750-e922-11e8-88e5-500c286f3262", 
+            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/e8b3f670-ea0e-11e8-a862-500c2893c036", 
             "ResourceStatus": "CREATE_COMPLETE", 
             "DriftInformation": {
                 "StackResourceDriftStatus": "NOT_CHECKED"
             }, 
             "ResourceType": "AWS::EC2::SecurityGroup", 
-            "Timestamp": "2018-11-15T22:07:30.366Z", 
+            "Timestamp": "2018-11-17T02:17:50.804Z", 
             "StackName": "jenkins", 
-            "PhysicalResourceId": "sg-0d96cc608d5e9ed12", 
+            "PhysicalResourceId": "sg-0c39b174d8998fe3a", 
             "LogicalResourceId": "JenkinsSecurityGroup"
         }, 
         {
-            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/c4e12750-e922-11e8-88e5-500c286f3262", 
+            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/e8b3f670-ea0e-11e8-a862-500c2893c036", 
             "ResourceStatus": "CREATE_COMPLETE", 
             "DriftInformation": {
                 "StackResourceDriftStatus": "NOT_CHECKED"
             }, 
             "ResourceType": "AWS::EC2::Instance", 
-            "Timestamp": "2018-11-15T22:12:21.153Z", 
+            "Timestamp": "2018-11-17T02:22:40.144Z", 
             "StackName": "jenkins", 
-            "PhysicalResourceId": "i-0333f67ee9204574b", 
+            "PhysicalResourceId": "i-0ba4c0696cbe26700", 
             "LogicalResourceId": "JenkinsServer"
         }, 
         {
-            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/c4e12750-e922-11e8-88e5-500c286f3262", 
+            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/e8b3f670-ea0e-11e8-a862-500c2893c036", 
             "ResourceStatus": "CREATE_COMPLETE", 
             "DriftInformation": {
                 "StackResourceDriftStatus": "NOT_CHECKED"
             }, 
             "ResourceType": "AWS::AutoScaling::AutoScalingGroup", 
-            "Timestamp": "2018-11-15T22:13:35.143Z", 
+            "Timestamp": "2018-11-17T02:24:12.487Z", 
             "StackName": "jenkins", 
-            "PhysicalResourceId": "jenkins-JenkinsSlaveGroup-L7UUTT5BJK5C", 
+            "PhysicalResourceId": "jenkins-JenkinsSlaveGroup-1IL1KC0LQPF69", 
             "LogicalResourceId": "JenkinsSlaveGroup"
         }, 
         {
-            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/c4e12750-e922-11e8-88e5-500c286f3262", 
+            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/e8b3f670-ea0e-11e8-a862-500c2893c036", 
             "ResourceStatus": "CREATE_COMPLETE", 
             "DriftInformation": {
                 "StackResourceDriftStatus": "NOT_CHECKED"
             }, 
             "ResourceType": "AWS::AutoScaling::LaunchConfiguration", 
-            "Timestamp": "2018-11-15T22:12:36.601Z", 
+            "Timestamp": "2018-11-17T02:23:14.856Z", 
             "StackName": "jenkins", 
-            "PhysicalResourceId": "jenkins-JenkinsSlaveLaunchConf-QNRYR8P5SX8L", 
+            "PhysicalResourceId": "jenkins-JenkinsSlaveLaunchConf-1I1IE8BZKF6I6", 
             "LogicalResourceId": "JenkinsSlaveLaunchConf"
         }, 
         {
-            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/c4e12750-e922-11e8-88e5-500c286f3262", 
+            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/e8b3f670-ea0e-11e8-a862-500c2893c036", 
             "ResourceStatus": "CREATE_COMPLETE", 
             "DriftInformation": {
                 "StackResourceDriftStatus": "NOT_CHECKED"
             }, 
             "ResourceType": "AWS::EC2::VPC", 
-            "Timestamp": "2018-11-15T22:07:19.936Z", 
+            "Timestamp": "2018-11-17T02:17:40.920Z", 
             "StackName": "jenkins", 
-            "PhysicalResourceId": "vpc-0ee01fbe011a1d693", 
+            "PhysicalResourceId": "vpc-0ee0a1f6121684f39", 
             "LogicalResourceId": "JenkinsVpc"
         }, 
         {
-            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/c4e12750-e922-11e8-88e5-500c286f3262", 
+            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/e8b3f670-ea0e-11e8-a862-500c2893c036", 
             "ResourceStatus": "CREATE_COMPLETE", 
             "DriftInformation": {
                 "StackResourceDriftStatus": "NOT_CHECKED"
             }, 
             "ResourceType": "AWS::EC2::Subnet", 
-            "Timestamp": "2018-11-15T22:07:40.322Z", 
+            "Timestamp": "2018-11-17T02:18:01.137Z", 
             "StackName": "jenkins", 
-            "PhysicalResourceId": "subnet-0bd5a5ce36163d8eb", 
+            "PhysicalResourceId": "subnet-0c61b1ac7bad2a98a", 
             "LogicalResourceId": "PublicSubnet1"
         }, 
         {
-            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/c4e12750-e922-11e8-88e5-500c286f3262", 
+            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/e8b3f670-ea0e-11e8-a862-500c2893c036", 
             "ResourceStatus": "CREATE_COMPLETE", 
             "DriftInformation": {
                 "StackResourceDriftStatus": "NOT_CHECKED"
             }, 
             "ResourceType": "AWS::EC2::Route", 
-            "Timestamp": "2018-11-15T22:07:43.558Z", 
+            "Timestamp": "2018-11-17T02:18:03.958Z", 
             "StackName": "jenkins", 
-            "PhysicalResourceId": "jenki-Publi-140Y4XZ2CZKWV", 
+            "PhysicalResourceId": "jenki-Publi-XSKKQ9XU027N", 
             "LogicalResourceId": "PublicSubnet1Route"
         }, 
         {
-            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/c4e12750-e922-11e8-88e5-500c286f3262", 
+            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/e8b3f670-ea0e-11e8-a862-500c2893c036", 
             "ResourceStatus": "CREATE_COMPLETE", 
             "DriftInformation": {
                 "StackResourceDriftStatus": "NOT_CHECKED"
             }, 
             "ResourceType": "AWS::EC2::SubnetRouteTableAssociation", 
-            "Timestamp": "2018-11-15T22:08:00.250Z", 
+            "Timestamp": "2018-11-17T02:18:20.688Z", 
             "StackName": "jenkins", 
-            "PhysicalResourceId": "rtbassoc-0c9bbc7661708bebf", 
+            "PhysicalResourceId": "rtbassoc-0ca7f429a4689f314", 
             "LogicalResourceId": "PublicSubnet1RouteAssociation"
         }, 
         {
-            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/c4e12750-e922-11e8-88e5-500c286f3262", 
+            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/e8b3f670-ea0e-11e8-a862-500c2893c036", 
             "ResourceStatus": "CREATE_COMPLETE", 
             "DriftInformation": {
                 "StackResourceDriftStatus": "NOT_CHECKED"
             }, 
             "ResourceType": "AWS::EC2::RouteTable", 
-            "Timestamp": "2018-11-15T22:07:24.450Z", 
+            "Timestamp": "2018-11-17T02:17:45.010Z", 
             "StackName": "jenkins", 
-            "PhysicalResourceId": "rtb-010ff2d4fdd56dccd", 
+            "PhysicalResourceId": "rtb-0b85cd38ca5be6778", 
             "LogicalResourceId": "PublicSubnet1RouteTable"
         }, 
         {
-            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/c4e12750-e922-11e8-88e5-500c286f3262", 
+            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/e8b3f670-ea0e-11e8-a862-500c2893c036", 
             "ResourceStatus": "CREATE_COMPLETE", 
             "DriftInformation": {
                 "StackResourceDriftStatus": "NOT_CHECKED"
             }, 
             "ResourceType": "AWS::IAM::Policy", 
-            "Timestamp": "2018-11-15T22:07:24.509Z", 
+            "Timestamp": "2018-11-17T02:17:43.977Z", 
             "StackName": "jenkins", 
-            "PhysicalResourceId": "jenki-S3Po-174EIAIZUZV7A", 
+            "PhysicalResourceId": "jenki-S3Po-1MA5PCOECKTJL", 
             "LogicalResourceId": "S3Policy"
         }, 
         {
-            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/c4e12750-e922-11e8-88e5-500c286f3262", 
+            "StackId": "arn:aws:cloudformation:us-east-1:463886098039:stack/jenkins/e8b3f670-ea0e-11e8-a862-500c2893c036", 
             "ResourceStatus": "CREATE_COMPLETE", 
             "DriftInformation": {
                 "StackResourceDriftStatus": "NOT_CHECKED"
             }, 
             "ResourceType": "AWS::EC2::VPCGatewayAttachment", 
-            "Timestamp": "2018-11-15T22:07:39.246Z", 
+            "Timestamp": "2018-11-17T02:17:59.957Z", 
             "StackName": "jenkins", 
-            "PhysicalResourceId": "jenki-VPCGa-120HLJQFR0H3L", 
+            "PhysicalResourceId": "jenki-VPCGa-FET90SI90Y7L", 
             "LogicalResourceId": "VPCGatewayAttachment"
         }
     ]
